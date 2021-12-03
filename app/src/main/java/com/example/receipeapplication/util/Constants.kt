@@ -1,4 +1,4 @@
-package com.example.receipeapplication
+package com.example.receipeapplication.util
 
 class Constants {
 

@@ -1,6 +1,6 @@
-package com.example.receipeapplication
+package com.example.receipeapplication.data.network
 
-import FoodRecipe
+import com.example.receipeapplication.models.FoodRecipe
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.QueryMap

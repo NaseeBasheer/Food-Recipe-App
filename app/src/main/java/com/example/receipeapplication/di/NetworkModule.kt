@@ -1,7 +1,7 @@
 package com.example.receipeapplication.di
 
-import com.example.receipeapplication.Constants.Companion.BASE_URL
-import com.example.receipeapplication.FoodRecipesApi
+import com.example.receipeapplication.util.Constants.Companion.BASE_URL
+import com.example.receipeapplication.data.network.FoodRecipesApi
 import dagger.Module
 import dagger.Provides
 
@@ -51,7 +51,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): FoodRecipesApi{
+    fun provideApiService(retrofit: Retrofit): FoodRecipesApi {
         return retrofit.create(FoodRecipesApi::class.java)
     }
 }
