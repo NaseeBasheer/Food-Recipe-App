@@ -1,7 +1,9 @@
 package com.example.receipeapplication.di
 
+import android.app.Application
 import com.example.receipeapplication.util.Constants.Companion.BASE_URL
 import com.example.receipeapplication.data.network.FoodRecipesApi
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
@@ -18,8 +20,10 @@ import javax.inject.Singleton
 //this network module where we're going to tell Hilt how to provide retrofit builder to our remote data source.
 object NetworkModule {
 
-    @Singleton
+
+
     @Provides
+    @Singleton
     fun provideHttpClient(): OkHttpClient{
         return OkHttpClient.Builder()
             .readTimeout(15, TimeUnit.SECONDS)
