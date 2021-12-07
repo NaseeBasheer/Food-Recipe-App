@@ -1,6 +1,6 @@
 package com.example.receipeapplication.models
 
-import ExtendedIngredient
+
 import com.google.gson.annotations.SerializedName
 
 data class Result(
