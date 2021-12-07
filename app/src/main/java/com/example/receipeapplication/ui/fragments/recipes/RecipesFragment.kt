@@ -15,6 +15,7 @@ import com.example.receipeapplication.R
 import com.example.receipeapplication.adapters.RecipesAdapter
 import com.example.receipeapplication.util.Constants.Companion.API_KEY
 import com.example.receipeapplication.util.NetworkResult
+import com.example.receipeapplication.util.observeOnce
 import com.example.receipeapplication.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
@@ -56,10 +57,10 @@ class RecipesFragment : Fragment() {
     }
 
     private fun readDatabase() {
-        Log.d("Recipes Fragment","Read database called")
         lifecycleScope.launch {
-            mainViewModel.readRecipes.observe(viewLifecycleOwner, { database ->
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner, { database ->
                 if(database.isNotEmpty()){
+                    Log.d("Recipes Fragment","Read database called")
                     mAdapter.setData(database[0].foodRecipe)
                     hideShimmerEffect()
                 }

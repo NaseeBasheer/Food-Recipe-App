@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_error_placeholder.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_food_joke.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
