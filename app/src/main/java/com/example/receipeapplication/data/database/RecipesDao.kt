@@ -1,4 +1,4 @@
-package com.example.receipeapplication
+package com.example.receipeapplication.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
