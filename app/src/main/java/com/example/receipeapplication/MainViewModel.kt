@@ -11,11 +11,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.receipeapplication.data.Repository
 import com.example.receipeapplication.models.FoodRecipe
 import com.example.receipeapplication.util.NetworkResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
+import javax.inject.Inject
 
-class MainViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val repository: Repository,
     application: Application)
     : AndroidViewModel(application) {
