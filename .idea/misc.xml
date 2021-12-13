@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/drawable/ic_sad.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/drawable/ic_star.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_details.xml" value="0.1033434650455927" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14402173913043478" />
         <entry key="app/src/main/res/layout/fragment_favorite_recipes.xml" value="0.12590579710144928" />
         <entry key="app/src/main/res/layout/fragment_food_jokes.xml" value="0.12590579710144928" />
