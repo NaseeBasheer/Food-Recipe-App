@@ -12,6 +12,7 @@ import coil.load
 import com.example.receipeapplication.R
 import com.example.receipeapplication.models.Result
 import com.example.receipeapplication.ui.fragments.recipes.RecipesFragmentDirections
+import org.jsoup.Jsoup
 import java.lang.Exception
 
 class RecipesRowBinding {
@@ -83,6 +84,15 @@ class RecipesRowBinding {
                 }
             }
 
+        }
+
+        @BindingAdapter("parseHtml")
+        @JvmStatic
+        fun parseHtml(textView: TextView, description: String?){
+            if(description != null){
+                val desc= Jsoup.parse(description).text()
+                textView.text = desc
+            }
         }
 
 
