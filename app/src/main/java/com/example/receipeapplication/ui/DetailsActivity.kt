@@ -11,6 +11,7 @@ import com.example.receipeapplication.R
 import com.example.receipeapplication.ui.fragments.ingredients.IngredientsFragment
 import com.example.receipeapplication.ui.fragments.instructions.InstructionsFragment
 import com.example.receipeapplication.ui.fragments.overview.OverviewFragment
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
@@ -37,15 +38,20 @@ class DetailsActivity : AppCompatActivity() {
         val resultBundle = Bundle()
         resultBundle.putParcelable("recipeBundle", args.result)
 
-        val adapter = PagerAdapter(
+        val pagerAdapter = PagerAdapter(
             resultBundle,
             fragments,
-            titles,
-            supportFragmentManager
+            this
         )
-        viewPager.adapter = adapter
-        tabLayout.setupWithViewPager(viewPager)
 
+
+        viewPager2.apply {
+            adapter = pagerAdapter
+        }
+        TabLayoutMediator(tabLayout, viewPager2){
+            tab, position->
+            tab.text = titles[position]
+        }.attach()
     }
 
 
