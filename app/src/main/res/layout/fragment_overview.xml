@@ -33,12 +33,12 @@
         android:id="@+id/time_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="12dp"
         android:text="100"
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/main_imageView"
         app:layout_constraintEnd_toEndOf="@+id/gradient_overlay" />
 
@@ -56,11 +56,11 @@
         android:id="@+id/likes_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="32dp"
         android:text="200"
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/time_textView"
         app:layout_constraintEnd_toStartOf="@+id/time_textView" />
 
