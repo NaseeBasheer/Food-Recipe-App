@@ -30,6 +30,7 @@
         <entry key="app/src/main/res/layout/recipes_raw_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/recipes_row_layout.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/details_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/recipes_menu.xml" value="0.15462962962962962" />
       </map>
     </option>
