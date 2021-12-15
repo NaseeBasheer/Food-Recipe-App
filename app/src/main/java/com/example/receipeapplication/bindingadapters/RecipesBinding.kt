@@ -4,10 +4,9 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.example.receipeapplication.data.database.RecipesEntity
+import com.example.receipeapplication.data.database.entities.RecipesEntity
 import com.example.receipeapplication.models.FoodRecipe
 import com.example.receipeapplication.util.NetworkResult
-import kotlinx.android.synthetic.main.placeholder_row_layout.view.*
 
 class RecipesBinding {
 

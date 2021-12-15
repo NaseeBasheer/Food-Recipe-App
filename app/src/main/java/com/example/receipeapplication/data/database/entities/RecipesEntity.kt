@@ -1,4 +1,4 @@
-package com.example.receipeapplication.data.database
+package com.example.receipeapplication.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
