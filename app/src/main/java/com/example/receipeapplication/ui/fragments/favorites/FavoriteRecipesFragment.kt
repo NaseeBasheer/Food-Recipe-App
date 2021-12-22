@@ -47,6 +47,7 @@ class FavoriteRecipesFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        mAdapter.clearContextualActionMode()
         _binding = null
     }
 
