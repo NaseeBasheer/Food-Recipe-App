@@ -1,26 +1,31 @@
 package com.example.receipeapplication.adapters
 
+import android.app.ProgressDialog.show
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import com.example.receipeapplication.R
 import com.example.receipeapplication.data.database.entities.FavoritesEntity
 import com.example.receipeapplication.databinding.FavoriteRecipesRowLayoutBinding
 import com.example.receipeapplication.ui.fragments.favorites.FavoriteRecipesFragmentDirections
 import com.example.receipeapplication.util.RecipesDiffUtil
+import com.example.receipeapplication.viewmodels.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.Hold
 import kotlinx.android.synthetic.main.favorite_recipes_row_layout.view.*
 import kotlinx.android.synthetic.main.fragment_favorite_recipes.view.*
 
-class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity): RecyclerView.Adapter<FavoriteRecipesAdapter.MyViewHolder>(), ActionMode.Callback{
+class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity, private val mainViewModel: MainViewModel): RecyclerView.Adapter<FavoriteRecipesAdapter.MyViewHolder>(), ActionMode.Callback{
     private var favoriteRecipes = emptyList<FavoritesEntity>()
     private var multiSelection = false
     private lateinit var mActionMode: ActionMode
     private var myViewHolders = arrayListOf<MyViewHolder>()
     private var selectedRecipes = arrayListOf<FavoritesEntity>()
+    private lateinit var rootView: View
 
     class MyViewHolder(private val binding: FavoriteRecipesRowLayoutBinding):
         RecyclerView.ViewHolder(binding.root) {
@@ -45,6 +50,7 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity): Rec
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         myViewHolders.add(holder)
+        rootView = holder.itemView.rootView
         val currentRecipe = favoriteRecipes[position]
         holder.bind(currentRecipe)
 
@@ -128,7 +134,16 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity): Rec
         return true
     }
 
-    override fun onActionItemClicked(actionMode: ActionMode?, item: MenuItem?): Boolean {
+    override fun onActionItemClicked(actionMode: ActionMode?, menu: MenuItem?): Boolean {
+        if(menu?.itemId == R.id.delete_favorite_recipe_menu){
+            selectedRecipes.forEach{
+                mainViewModel.deleteFavoriteRecipe(it)
+            }
+            showSnackBar("${selectedRecipes.size} Recipe/s removed.")
+            multiSelection = false
+            selectedRecipes.clear()
+            actionMode?.finish()
+        }
         return true
     }
 
@@ -151,5 +166,13 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity): Rec
         val diffUtilResult = DiffUtil.calculateDiff(favoriteRecipesDiffUtil)
         favoriteRecipes = newFavoriteRecipes
         diffUtilResult.dispatchUpdatesTo(this)
+    }
+    private fun showSnackBar(message: String){
+        Snackbar.make(
+            rootView,
+            message,
+            Snackbar.LENGTH_SHORT
+        ).setAction("Okay"){}
+            .show()
     }
 }
