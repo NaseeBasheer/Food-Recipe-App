@@ -69,7 +69,7 @@
                     android:id="@+id/favorite_description_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{favoritesEntity.result.summary}"
+                    parseHtml="@{favoritesEntity.result.summary}"
                     android:layout_marginTop="12dp"
                     android:ellipsize="end"
                     android:maxLines="3"
