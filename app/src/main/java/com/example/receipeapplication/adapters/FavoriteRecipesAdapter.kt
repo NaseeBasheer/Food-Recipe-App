@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_favorite_recipes.view.*
 class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity): RecyclerView.Adapter<FavoriteRecipesAdapter.MyViewHolder>(), ActionMode.Callback{
     private var favoriteRecipes = emptyList<FavoritesEntity>()
     private var multiSelection = false
+    private lateinit var mActionMode: ActionMode
     private var myViewHolders = arrayListOf<MyViewHolder>()
     private var selectedRecipes = arrayListOf<FavoritesEntity>()
 
@@ -85,9 +86,11 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity): Rec
         if(selectedRecipes.contains(currentRecipe)){
             selectedRecipes.remove(currentRecipe)
             changeRecipeStyle(holder, R.color.cardBackgroundColor, R.color.strokeColor)
+            applyActionModeTitle()
         }else{
             selectedRecipes.add(currentRecipe)
             changeRecipeStyle(holder, R.color.cardBackgroundLightColor, R.color.colorPrimary)
+            applyActionModeTitle()
         }
     }
     private fun changeRecipeStyle(holder: MyViewHolder, backgroundColor: Int, strokeColor: Int){
@@ -98,11 +101,25 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity): Rec
             ContextCompat.getColor(requireActivity, strokeColor)
         )
     }
+    private fun applyActionModeTitle(){
+        when(selectedRecipes.size){
+            0->{
+                mActionMode.finish()
+            }
+            1->{
+                mActionMode.title = "${selectedRecipes.size} item selected"
+            }
+            else->{
+                mActionMode.title = "${selectedRecipes.size} items selected"
+            }
+        }
+    }
 
 
 
     override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
         actionMode?.menuInflater?.inflate(R.menu.favorites_contextual_menu, menu)
+        mActionMode = actionMode!!
         applyStatusBarColor(R.color.contextualStatusBarColor)
         return true
     }
