@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_splash_screen_light.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/gradient_overlay.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_error_placeholder.xml" value="0.1" />
@@ -20,7 +21,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14402173913043478" />
         <entry key="app/src/main/res/layout/favorite_recipes_row_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_favorite_recipes.xml" value="0.1016949152542373" />
-        <entry key="app/src/main/res/layout/fragment_food_jokes.xml" value="0.12590579710144928" />
+        <entry key="app/src/main/res/layout/fragment_food_jokes.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_ingredients.xml" value="0.1033434650455927" />
         <entry key="app/src/main/res/layout/fragment_instructions.xml" value="0.1033434650455927" />
         <entry key="app/src/main/res/layout/fragment_overview.xml" value="0.33" />
