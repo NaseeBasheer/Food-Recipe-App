@@ -2,6 +2,7 @@ package com.example.receipeapplication.data
 
 import android.widget.SearchView
 import com.example.receipeapplication.data.network.FoodRecipesApi
+import com.example.receipeapplication.models.FoodJoke
 import com.example.receipeapplication.models.FoodRecipe
 import retrofit2.Response
 import javax.inject.Inject
@@ -18,6 +19,10 @@ class RemoteDataSource @Inject constructor(
     }
     suspend fun searchRecipes(searchQuery: Map<String, String>): Response<FoodRecipe>{
         return foodRecipesApi.searchRecipes(searchQuery)
+    }
+
+    suspend fun getFoodJoke(apiKey: String): Response<FoodJoke>{
+        return foodRecipesApi.getFoodJoke(apiKey)
     }
 
 }
