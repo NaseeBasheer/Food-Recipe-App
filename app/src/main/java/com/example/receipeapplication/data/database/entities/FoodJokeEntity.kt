@@ -1,0 +1,14 @@
+package com.example.receipeapplication.data.database.entities
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.example.receipeapplication.models.FoodJoke
+import com.example.receipeapplication.util.Constants.Companion.FOOD_JOKE_TABLE
+
+@Entity(tableName = FOOD_JOKE_TABLE)
+class FoodJokeEntity(
+    var foodJoke: FoodJoke
+) {
+    @PrimaryKey(autoGenerate = false)
+    var id: Int = 0
+}
