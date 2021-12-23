@@ -9,7 +9,8 @@ import com.example.receipeapplication.data.database.entities.FoodJokeEntity
 import com.example.receipeapplication.data.database.entities.RecipesEntity
 
 @Database(
-    entities = [RecipesEntity::class, FavoritesEntity::class, FoodJokeEntity::class], version = 2, exportSchema = false
+    entities = [RecipesEntity::class, FavoritesEntity::class, FoodJokeEntity::class],
+    version = 1, exportSchema = false
 )
 @TypeConverters(RecipesTypeConverter::class)
 abstract class RecipesDatabase: RoomDatabase() {
