@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.datastore.preferences.preferencesDataStoreFile
 import com.example.receipeapplication.util.Constants.Companion.DEFAULT_DIET_TYPE
 import com.example.receipeapplication.util.Constants.Companion.DEFAULT_MEAL_TYPE
 import com.example.receipeapplication.util.Constants.Companion.PREFERENCES_BACK_ONLINE
