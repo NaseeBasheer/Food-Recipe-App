@@ -12,6 +12,8 @@ import androidx.navigation.navArgs
 import com.example.receipeapplication.adapters.PagerAdapter
 import com.example.receipeapplication.R
 import com.example.receipeapplication.data.database.entities.FavoritesEntity
+import com.example.receipeapplication.databinding.ActivityDetailsBinding
+import com.example.receipeapplication.databinding.ActivityMainBinding
 import com.example.receipeapplication.ui.fragments.ingredients.IngredientsFragment
 import com.example.receipeapplication.ui.fragments.instructions.InstructionsFragment
 import com.example.receipeapplication.ui.fragments.overview.OverviewFragment
@@ -19,11 +21,12 @@ import com.example.receipeapplication.viewmodels.MainViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_details.*
 import java.lang.Exception
 
 @AndroidEntryPoint
 class DetailsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailsBinding
     private val args by navArgs<DetailsActivityArgs>()
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var menuItem: MenuItem
@@ -33,10 +36,11 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(toolbar)
-        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        setSupportActionBar(binding.toolbar)
+            binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val fragments = ArrayList<Fragment>()
@@ -60,10 +64,10 @@ class DetailsActivity : AppCompatActivity() {
         )
 
 
-        viewPager2.apply {
+        binding.viewPager2.apply {
             adapter = pagerAdapter
         }
-        TabLayoutMediator(tabLayout, viewPager2){
+        TabLayoutMediator(binding.tabLayout, binding.viewPager2){
             tab, position->
             tab.text = titles[position]
         }.attach()
@@ -130,7 +134,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun showSnackBar(message: String) {
         Snackbar.make(
-            detailsLayout,
+            binding.detailsLayout,
             message,
             Snackbar.LENGTH_SHORT
         ).setAction("Okay") {}

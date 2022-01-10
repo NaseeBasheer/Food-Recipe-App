@@ -16,8 +16,7 @@ import com.example.receipeapplication.util.RecipesDiffUtil
 import com.example.receipeapplication.viewmodels.MainViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.Hold
-import kotlinx.android.synthetic.main.favorite_recipes_row_layout.view.*
-import kotlinx.android.synthetic.main.fragment_favorite_recipes.view.*
+
 
 class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity, private val mainViewModel: MainViewModel): RecyclerView.Adapter<FavoriteRecipesAdapter.MyViewHolder>(), ActionMode.Callback{
     private var favoriteRecipes = emptyList<FavoritesEntity>()
@@ -27,7 +26,7 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity, priv
     private var selectedRecipes = arrayListOf<FavoritesEntity>()
     private lateinit var rootView: View
 
-    class MyViewHolder(private val binding: FavoriteRecipesRowLayoutBinding):
+    class MyViewHolder(val binding: FavoriteRecipesRowLayoutBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(favoritesEntity: FavoritesEntity){
             binding.favoritesEntity = favoritesEntity
@@ -55,7 +54,7 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity, priv
         holder.bind(currentRecipe)
 
         //single click listener
-        holder.itemView.favoriteRecipesRowLayout.setOnClickListener {
+        holder.binding.favoriteRecipesRowLayout.setOnClickListener {
             if(multiSelection){
                 applySelection(holder, currentRecipe)
             }
@@ -70,7 +69,7 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity, priv
         }
 
         //long click listener
-        holder.itemView.favoriteRecipesRowLayout.setOnLongClickListener {
+        holder.binding.favoriteRecipesRowLayout.setOnLongClickListener {
             if(!multiSelection){
                 multiSelection = true
                 requireActivity.startActionMode(this)
@@ -100,10 +99,10 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity, priv
         }
     }
     private fun changeRecipeStyle(holder: MyViewHolder, backgroundColor: Int, strokeColor: Int){
-        holder.itemView.favoriteRecipesRowLayout.setBackgroundColor(
+        holder.binding.favoriteRecipesRowLayout.setBackgroundColor(
             ContextCompat.getColor(requireActivity, backgroundColor)
         )
-        holder.itemView.favorite_row_cardView.setStrokeColor(
+        holder.binding.favoriteRowCardView.setStrokeColor(
             ContextCompat.getColor(requireActivity, strokeColor)
         )
     }

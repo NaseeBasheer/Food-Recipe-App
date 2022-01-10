@@ -15,13 +15,11 @@ import com.example.receipeapplication.viewmodels.MainViewModel
 import com.example.receipeapplication.R
 import com.example.receipeapplication.adapters.RecipesAdapter
 import com.example.receipeapplication.databinding.FragmentRecipesBinding
-import com.example.receipeapplication.util.Constants.Companion.API_KEY
 import com.example.receipeapplication.util.NetworkListener
 import com.example.receipeapplication.util.NetworkResult
 import com.example.receipeapplication.util.observeOnce
 import com.example.receipeapplication.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_recipes.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -53,7 +51,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
        _binding =  FragmentRecipesBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
@@ -195,8 +193,8 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.recyclerview.hideShimmer()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 
