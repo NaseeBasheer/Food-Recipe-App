@@ -1,11 +1,10 @@
 package com.example.receipeapplication.data
-
-import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 //injects local data source into this repo
 
-@ActivityRetainedScoped
+@ViewModelScoped
 class Repository @Inject constructor(
     remoteDataSource: RemoteDataSource,
     localDataSource: LocalDataSource
