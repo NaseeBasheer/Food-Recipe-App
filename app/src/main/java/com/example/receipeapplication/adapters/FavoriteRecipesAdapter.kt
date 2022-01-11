@@ -52,6 +52,7 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity, priv
         rootView = holder.itemView.rootView
         val currentRecipe = favoriteRecipes[position]
         holder.bind(currentRecipe)
+        saveItemStateOnScroll(currentRecipe, holder)
 
         //single click listener
         holder.binding.favoriteRecipesRowLayout.setOnClickListener {
@@ -81,6 +82,15 @@ class FavoriteRecipesAdapter(private val requireActivity: FragmentActivity, priv
             }
 
         }
+    }
+
+    private fun saveItemStateOnScroll(currentRecipe: FavoritesEntity, holder: MyViewHolder){
+        if(selectedRecipes.contains(currentRecipe)){
+            changeRecipeStyle(holder, R.color.cardBackgroundLightColor, R.color.colorPrimary)
+        }else{
+            changeRecipeStyle(holder, R.color.cardBackgroundColor, R.color.strokeColor)
+        }
+
     }
 
     override fun getItemCount(): Int {
